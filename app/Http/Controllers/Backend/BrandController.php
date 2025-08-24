@@ -12,4 +12,9 @@ class BrandController extends Controller
         $brand = Brand::latest()->get();
         return view('admin.backend.brand.all_brand',compact('brand'));
     } //End Method
+
+    public function AddBrand() {
+
+        return view('admin.backend.brand.add_brand');
+    } //End Method
 }

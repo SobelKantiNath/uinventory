@@ -1,6 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 
+
 @php
     // If $profileData not provided by controller, fallback to authenticated user
     $profileData = $profileData ?? Auth::user();
@@ -198,6 +199,8 @@
 </div><!-- content -->
 
 {{-- Image preview script: ensure jQuery is loaded in layout --}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 @push('scripts')
 <script type="text/javascript">
     $(document).ready(function () {

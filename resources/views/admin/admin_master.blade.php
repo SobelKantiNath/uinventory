@@ -13,6 +13,8 @@
         <!-- App favicon -->
         <link href="{{asset('backend/assets/images/favicon.ico')}}" rel="shortcut icon" >
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
         <!-- Datatables css -->
         <link href="{{ asset('backend/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />

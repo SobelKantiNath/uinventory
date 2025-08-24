@@ -15,8 +15,7 @@
 
     <div class="text-end">
         <ol class="breadcrumb m-0 py-0">
-            <li class="breadcrumb-item"><a href="javascript: void(0);">All Brand</a></li>
-            <li class="breadcrumb-item active">Content</li>
+            <a href="{{ route('add.brand') }}" class="btn btn-secondary">Add Brand</a>
         </ol>
     </div>
 </div>
@@ -28,6 +27,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
+                <h5 class="card-title mb-0">All Brand</h5>
             </div><!-- end card header -->
 
             <div class="card-body">
