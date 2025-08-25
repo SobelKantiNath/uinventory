@@ -201,7 +201,7 @@
 {{-- Image preview script: ensure jQuery is loaded in layout --}}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-@push('scripts')
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('#image').on('change', function (e) {
@@ -215,6 +215,5 @@
         });
     });
 </script>
-@endpush
 
 @endsection

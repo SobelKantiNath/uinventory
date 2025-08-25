@@ -45,9 +45,9 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ $item->name }}</td>
-                            <td><img src="{{ asset($item->image) }}" alt="" style="width: 70px; height: 20px"></td>
+                            <td><img src="{{ asset($item->image) }}" alt="" style="width: 80px; height: 40px"></td>
                             <td>
-                                <a href="" class="btn btn-success btn-sm">Edit</a>
+                                <a href="{{ route('edit.brand', $item->id) }}" class="btn btn-success btn-sm">Edit</a>
                                 <a href="" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>

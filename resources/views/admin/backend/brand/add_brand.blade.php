@@ -25,7 +25,8 @@
             </div><!-- end card header -->
 
             <div class="card-body">
-                <form class="row g-3">
+                <form action="{{ route('store.brand') }}" method="POST" enctype="multipart/form-data" class="row g-3">
+                    @csrf
                     <div class="col-md-12">
                         <label for="validationDefault01" class="form-label">Name:</label>
                         <input type="text" class="form-control" name="name">
@@ -44,7 +45,7 @@
                     </div>
 
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Submit form</button>
+                        <button class="btn btn-primary" type="submit">Save Changes</button>
                     </div>
                 </form>
             </div> <!-- end card-body -->
@@ -53,7 +54,6 @@
 </div>
 </div>
 
-@push('scripts')
 <script type="text/javascript">
     $(document).ready(function () {
         $('#image').on('change', function (e) {
@@ -67,6 +67,5 @@
         });
     });
 </script>
-@endpush
 
 @endsection
