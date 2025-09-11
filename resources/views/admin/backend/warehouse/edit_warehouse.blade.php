@@ -6,12 +6,12 @@
 
 <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
     <div class="flex-grow-1">
-        <h4 class="fs-18 fw-semibold m-0">Add WareHouse</h4>
+        <h4 class="fs-18 fw-semibold m-0">Edit WareHouse</h4>
     </div>
 
     <div class="text-end">
         <ol class="breadcrumb m-0 py-0">
-            <li class="breadcrumb-item"><a href="javascript: void(0);">Add WareHouse</a></li>
+            <li class="breadcrumb-item"><a href="javascript: void(0);">Edit WareHouse</a></li>
         </ol>
     </div>
 </div>
@@ -21,15 +21,16 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title mb-0">Add WareHouse</h5>
+                <h5 class="card-title mb-0">Edit WareHouse</h5>
             </div><!-- end card header -->
 
             <div class="card-body">
-                <form action="{{ route('store.warehouse') }}" method="POST" class="row g-3">
+                <form action="{{ route('update.warehouse') }}" method="POST" class="row g-3">
                     @csrf
+                    <input type="hidden" name="id" id="" value="{{ $warehouse->id }}">
                     <div class="col-md-6">
                         <label for="validationDefault01" class="form-label">Name:</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $warehouse->name }}">
 
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -39,7 +40,7 @@
 
                     <div class="col-md-6">
                         <label for="validationDefault01" class="form-label">Email:</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $warehouse->email }}">
 
                         @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -48,7 +49,7 @@
 
                     <div class="col-md-6">
                         <label for="validationDefault01" class="form-label">Phone:</label>
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone">
+                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $warehouse->phone }}">
 
                         @error('phone')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -57,7 +58,7 @@
 
                     <div class="col-md-6">
                         <label for="validationDefault01" class="form-label">City:</label>
-                        <input type="text" class="form-control @error('city') is-invalid @enderror" name="city">
+                        <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $warehouse->city }}">
 
                         @error('city')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -65,7 +66,7 @@
                     </div>
 
                     <div class="col-6">
-                        <button class="btn btn-primary" type="submit">Save Changes</button>
+                        <button class="btn btn-primary" type="submit">Update WareHouse</button>
                     </div>
                 </form>
             </div> <!-- end card-body -->

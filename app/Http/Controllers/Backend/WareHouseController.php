@@ -20,29 +20,76 @@ class WareHouseController extends Controller
 
     public function StoreWareHouse( Request $request) {
 
-        if($request->file('image')){
-            $image = $request->file('image');
-            $manager = new ImageManager(new Driver());
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            $img = $manager->read($image);
-            $img->resize(100,90)->save(public_path('upload/brand/'.$name_gen));
-            $save_url = 'upload/brand/'.$name_gen;
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email'=> 'required|email|unique:ware_houses,email|max:255',
+            'phone'=> 'nullable|string|max:20',
+            'city'=> 'nullable|string|max:255',
+        ]);
 
-            Brand::create([
-                'name' => $request->name,
-                'image' => $save_url
-            ]);
-
-
-        }
+        WareHouse::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'city' => $validated['city'],
+        ]);
 
         // shows the toaster message where admin master added js file
 
         $notification = array(
-            'message' => 'Brand Inserted Successfully',
+            'message' => 'WareHouse Inserted Successfully',
             'alert-type' => 'success'
         );
-        return redirect()->route('all.brand')->with($notification);
+        return redirect()->route('all.warehouse')->with($notification);
 
     } //End Method
+
+    public function EditWareHouse($id) {
+
+        $warehouse = WareHouse::find($id);
+        return view('admin.backend.warehouse.edit_warehouse',compact('warehouse'));
+
+    } //End Method
+
+    public function UpdateWareHouse( Request $request) {
+
+        $ware_id = $request->id;
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email'=> 'required|email|max:255',
+            'phone'=> 'nullable|string|max:20',
+            'city'=> 'nullable|string|max:255',
+        ]);
+
+        WareHouse::find($ware_id)->update([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'city' => $validated['city'],
+        ]);
+
+        // shows the toaster message where admin master added js file
+
+        $notification = array(
+            'message' => 'WareHouse Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.warehouse')->with($notification);
+
+    } //End Method
+
+
+    public function DeleteWareHouse($id){
+        $item = WareHouse::find($id);
+
+        WareHouse::find($id)->delete();
+        $notification = array(
+                'message' => 'WareHouse Deleted Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+
+    } //End Method
+
 }
