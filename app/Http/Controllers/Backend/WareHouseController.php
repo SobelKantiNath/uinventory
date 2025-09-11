@@ -81,8 +81,7 @@ class WareHouseController extends Controller
 
 
     public function DeleteWareHouse($id){
-        $item = WareHouse::find($id);
-
+        
         WareHouse::find($id)->delete();
         $notification = array(
                 'message' => 'WareHouse Deleted Successfully',
