@@ -58,11 +58,12 @@
 
                     <div class="col-md-6">
                         <label for="validationDefault01" class="form-label">City:</label>
-                        <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $supplier->address }}">
-
-                        @error('city')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        {{-- textarea not send value as well as input field it send this system {{ $supplier->address }} --}}
+                        <textarea class="form-control @error('address') is-invalid @enderror"
+                            name="address" rows="2">{{ old('address', $supplier->address) }}</textarea>
+                            @error('address')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     <div class="col-6">

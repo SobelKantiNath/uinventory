@@ -25,9 +25,9 @@
             </div><!-- end card header -->
 
             <div class="card-body">
-                <form action="{{ route('store.supplier') }}" method="POST" class="row g-3">
+                <form id="myForm" action="{{ route('store.supplier') }}" method="POST" class="row g-3">
                     @csrf
-                    <div class="col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="validationDefault01" class="form-label">Name:</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
 
@@ -37,7 +37,7 @@
 
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="validationDefault01" class="form-label">Email:</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
 
@@ -46,7 +46,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="validationDefault01" class="form-label">Phone:</label>
                         <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone">
 
@@ -55,13 +55,14 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="validationDefault01" class="form-label">Address:</label>
-                        <input type="text" class="form-control @error('address') is-invalid @enderror" name="city">
 
-                        @error('city')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <textarea class="form-control @error('address') is-invalid @enderror"
+                            name="address" rows="2">{{ old('address') }}</textarea>
+                            @error('address')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     <div class="col-6">
@@ -73,5 +74,59 @@
     </div> <!-- end col -->
 </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                name: {
+                    required : true,
+                },
+
+                email: {
+                    required : true,
+                },
+                phone: {
+                    required : true,
+                },
+
+                address: {
+                    required : true,
+                },
+
+            },
+
+            messages :{
+                name: {
+                    required : 'Please Enter Supplier Name',
+                },
+
+                email: {
+                    required : 'Please Enter Supplier Email',
+                },
+
+                phone: {
+                    required : 'Please Enter Supplier Phone',
+                },
+
+                address: {
+                    required : 'Please Enter Supplier Address',
+                },
+            },
+            errorElement : 'span',
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+
+</script>
 
 @endsection

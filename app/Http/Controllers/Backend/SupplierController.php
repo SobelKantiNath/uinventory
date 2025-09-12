@@ -27,11 +27,11 @@ class SupplierController extends Controller
             'name' => 'required|string|max:255',
             'email'=> 'required|email|unique:ware_houses,email|max:255',
             'phone'=> 'nullable|string|max:20',
-            'address'=> 'nullable|text|max:255',
+            'address'=> 'nullable|string',
         ]);
 
         Supplier::create([
-            'name' => $validated['name'],
+            'name' => $validated['name'], //Where database name, email, phone, address = assign requested name, email, phone and address which  is comming from form data
             'email' => $validated['email'],
             'phone' => $validated['phone'],
             'address' => $validated['address'],
@@ -47,7 +47,7 @@ class SupplierController extends Controller
 
     } //End Method
 
-    public function EditSupplier($id) {
+    public function EditSupplier($id) { //This id is comes from route not from blade page
 
         $supplier = Supplier::find($id);
         return view('admin.backend.supplier.edit_supplier',compact('supplier'));
@@ -56,13 +56,13 @@ class SupplierController extends Controller
 
     public function UpdateSupplier( Request $request) {
 
-        $supplier_id = $request->id;
+        $supplier_id = $request->id; //This is is coming from blade page
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email'=> 'required|email|max:255',
             'phone'=> 'nullable|string|max:20',
-            'address'=> 'nullable|text',
+            'address'=> 'nullable|string',
         ]);
 
         Supplier::find($supplier_id)->update([
@@ -83,7 +83,7 @@ class SupplierController extends Controller
     } //End Method
 
 
-    public function DeleteSupplier($id){
+    public function DeleteSupplier($id){ //This id is comes from route not from blade page
 
         Supplier::find($id)->delete();
         $notification = array(
