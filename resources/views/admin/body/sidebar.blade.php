@@ -97,6 +97,21 @@
                 </li>
 
                 <li>
+                    <a href="#Employee" data-bs-toggle="collapse">
+                        <i data-feather="users"></i>
+                        <span> Employee Manage </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="Employee">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.employee') }}" class="tp-link">All Employee</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
                     <a href="#sidebarError" data-bs-toggle="collapse">
                         <i data-feather="alert-octagon"></i>
                         <span> Error Pages </span>

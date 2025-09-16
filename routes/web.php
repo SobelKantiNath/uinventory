@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\WareHouseController;
 use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\EmployeeController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -77,5 +78,16 @@ Route::middleware('auth')->group(function () {
         Route::post('update/customer', 'UpdateCustomer')->name('update.customer');
         Route::get('delete/customer/{id}', 'DeleteCustomer')->name('delete.customer');
     });
+
+    // Employee Routes
+    Route::controller(EmployeeController::class)->group(function () {
+        Route::get('all/employee', 'AllEmployee')->name('all.employee');
+        Route::get('add/employee', 'AddEmployee')->name('add.employee');
+        Route::post('store/employee', 'StoreEmployee')->name('store.employee');
+        Route::get('edit/employee/{id}', 'EditEmployee')->name('edit.employee');
+        Route::post('update/employee', 'UpdateEmployee')->name('update.employee');
+        Route::get('delete/employee/{id}', 'DeleteEmployee')->name('delete.employee');
+    });
+
 
 });
