@@ -34,11 +34,11 @@
                     </a>
                 </li>
 
-                <li class="menu-title">Pages</li>
+                <li class="menu-title">Sub Menu</li>
 
                 <li>
                     <a href="#sidebarAuth" data-bs-toggle="collapse">
-                        <i data-feather="users"></i>
+                        <i data-feather="tag"></i>   {{-- Brand Icon --}}
                         <span> Brand Manage </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -53,7 +53,7 @@
 
                 <li>
                     <a href="#WareHouse" data-bs-toggle="collapse">
-                        <i data-feather="users"></i>
+                        <i data-feather="archive"></i>   {{-- Warehouse Icon --}}
                         <span> WareHouse Manage </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -68,7 +68,7 @@
 
                 <li>
                     <a href="#Supplier" data-bs-toggle="collapse">
-                        <i data-feather="users"></i>
+                        <i data-feather="truck"></i>   {{-- Supplier Icon --}}
                         <span> Supplier Manage </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -83,7 +83,7 @@
 
                 <li>
                     <a href="#Customer" data-bs-toggle="collapse">
-                        <i data-feather="users"></i>
+                        <i data-feather="user-check"></i>   {{-- Customer Icon --}}
                         <span> Customer Manage </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -98,7 +98,7 @@
 
                 <li>
                     <a href="#Employee" data-bs-toggle="collapse">
-                        <i data-feather="users"></i>
+                        <i data-feather="briefcase"></i>   {{-- Employee Icon --}}
                         <span> Employee Manage </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -106,6 +106,21 @@
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('all.employee') }}" class="tp-link">All Employee</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#Product" data-bs-toggle="collapse">
+                        <i data-feather="shopping-bag"></i>   {{-- Product Icon --}}
+                        <span> Product Manage </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="Product">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.category') }}" class="tp-link">All Category</a>
                             </li>
                         </ul>
                     </div>
