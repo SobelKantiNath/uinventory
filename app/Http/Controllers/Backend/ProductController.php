@@ -38,4 +38,10 @@ class ProductController extends Controller
         return redirect()->back()->with($notification);
 
     } // End Method
+
+    public function EditCategory($id)
+    {
+        $category = ProductCategory::find($id);
+        return response()->json($category);
+    } // End Method
 }
