@@ -71,12 +71,7 @@
                             <td>{{ $item->category_slug }}</td>
 
                             <td>
-
                                 <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#category" id="{{ $item->id }}" onclick="categoryEdit(this.id)">Edit</button>
-
-
-
-
                                 <a href="" class="btn btn-danger btn-sm" id="delete">Delete</a>
                             </td>
                         </tr>
