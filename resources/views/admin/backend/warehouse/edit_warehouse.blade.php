@@ -63,8 +63,7 @@
                         @error('city')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                    </div>
-
+                    </div> 
                     <div class="col-6">
                         <button class="btn btn-primary" type="submit">Update WareHouse</button>
                     </div>

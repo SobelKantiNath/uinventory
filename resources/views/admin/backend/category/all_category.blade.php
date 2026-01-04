@@ -72,7 +72,7 @@
 
                             <td>
                                 <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#category" id="{{ $item->id }}" onclick="categoryEdit(this.id)">Edit</button>
-                                <a href="" class="btn btn-danger btn-sm" id="delete">Delete</a>
+                                <a href="{{ route('delete.category', $item->id) }}" class="btn btn-danger btn-sm" id="delete">Delete</a>
                             </td>
                         </tr>
                         @endforeach
@@ -87,8 +87,9 @@
 </div> <!-- container-fluid -->
 
 </div> <!-- content -->
-<!-- All Category Modal -->
-<div class="modal fade" id="standard-modal" tabindex="-1" aria-labelledby="standard-modalLabel" aria-hidden="true">
+
+<!-- Product Edit Category Modal -->
+<div class="modal fade" id="category" tabindex="-1" aria-labelledby="standard-modalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -96,15 +97,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
         <div class="modal-body">
-            <form action="{{ route('store.category') }}" method="post">
+            <form action="{{ route('update.category') }}" method="post">
                 @csrf
+                <input type="hidden" name="cat_id" id="cat_id">
                 <div class="form-group col-md-12">
                     <label for="input1" class="form-label">Product Category Name</label>
-                    <input type="text" class="form-control" name="category_name" id="input1">
+                    <input type="text" class="form-control" name="category_name" id="cat">
                 </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Update changes</button>
                 </div>
             </form>
 
@@ -120,8 +122,9 @@
             dataType: 'json',
 
             success:function(data){
-                console.log(data);
-                $('#cat')
+                //console.log(data);
+                $('#cat').val(data.category_name);
+                $('#cat_id').val(data.id);
             }
         })
     }

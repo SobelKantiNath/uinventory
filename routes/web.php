@@ -96,6 +96,10 @@ Route::middleware('auth')->group(function () {
         Route::post('store/category', 'StoreCategory')->name('store.category');
 
         Route::get('/edit/category/{id}', 'EditCategory');//Here the blade file we create a url, not create route so not use route name
+
+        Route::post('update/category', 'UpdateCategory')->name('update.category');
+
+        Route::get('delete/category/{id}', 'DeleteCategory')->name('delete.category');
     });
 
 

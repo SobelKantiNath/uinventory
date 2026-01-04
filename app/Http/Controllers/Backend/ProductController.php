@@ -44,4 +44,33 @@ class ProductController extends Controller
         $category = ProductCategory::find($id);
         return response()->json($category);
     } // End Method
+
+    // ✅ Update Category
+    public function UpdateCategory(Request $request)
+    {
+        $cat_id = $request->cat_id;
+
+        ProductCategory::find($cat_id)->update([
+             'category_name' =>$request->category_name,
+            'category_slug' => strtolower(str_replace(' ', '-', $request->category_name)),
+        ]);
+
+        // shows the toaster message where admin master added js file
+
+        $notification = array(
+            'message' => 'Category Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+
+    } // End Method
+
+    public function DeleteCategory($id){
+        ProductCategory::find($id)->delete();
+        $notification = array(
+            'message' => 'Category Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 }
