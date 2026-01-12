@@ -46,26 +46,14 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>
-                                @if($item->image && $item->image->count() > 0)
-                                    <img src="{{ asset($item->image->first()->image_path) }}"
-                                        alt="{{ $item->name }}"
-                                        style="width: 50px; height: 50px; object-fit: cover;">
-                                @else
-                                    <img src="{{ asset('upload/no_image.jpg') }}"
-                                        alt="No Image"
-                                        style="width: 50px; height: 50px; object-fit: cover;">
-                                @endif
-                            </td>
-                            {{-- <td>
-                                 @php
-                                    // {{ $product->images->first()->image_path }}
-                                    $primaryImage = $item->image->first()->image_path ?? '/upload/no_image.jpg'
+                                @php
+                                    $primaryImage = $item->images->first()->image ?? '/upload/no_image.jpg';
                                 @endphp
                                 <img src="{{ asset($primaryImage) }}" alt="img" width="40px">
+                            </td>
 
-                            </td> --}}
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->warehouse_id }}</td>
+                            <td>{{ $item['warehouse']['name'] }}</td>
                             <td>{{ $item->price }}</td>
                             <td>
                                 @if ($item->product_qty <= 3)

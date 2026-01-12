@@ -115,6 +115,7 @@ class ProductController extends Controller
             'status' => $request->status,
             'created_at' => now(),
         ]);
+
         $product_id = $product->id;
         // Handle multiple images
         if($request->hasFile(('image'))){
@@ -122,7 +123,7 @@ class ProductController extends Controller
                 $manager = new ImageManager(new Driver());
                 $name_gen = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
                 $imgs = $manager->read($img);
-                $imgs->resize(100,90)->save(public_path('upload/productimg/'.$name_gen));
+                $imgs->resize(60,50)->save(public_path('upload/productimg/'.$name_gen));
                 $save_url = 'upload/productimg/'.$name_gen;
 
                 ProductImage::create([
