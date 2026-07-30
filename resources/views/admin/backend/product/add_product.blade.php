@@ -1,5 +1,16 @@
 @extends('admin.admin_master')
 @section('admin')
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul class="mb-0">
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 <div class="content d-flex flex-column flex-column-fluid">
     <div class="d-flex flex-column-fluid">
         <div class="container-fluid my-0">

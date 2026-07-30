@@ -61,11 +61,16 @@
                 @yield('admin')
 
 
-                <!-- Footer Start -->
-                @include('admin.body.footer')
-                <!-- end Footer -->
+
+
+
 
             </div>
+
+            <!-- Footer Start -->
+            @include('admin.body.footer')
+            <!-- end Footer -->
+
             <!-- ============================================================== -->
             <!-- End Page content -->
             <!-- ============================================================== -->

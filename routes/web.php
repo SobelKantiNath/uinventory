@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
         Route::get('delete/employee/{id}', 'DeleteEmployee')->name('delete.employee');
     });
 
-    // Prouduct Routes
+    // Category Routes
     Route::controller(ProductController::class)->group(function () {
         Route::get('all/category', 'AllCategory')->name('all.category');
         Route::post('store/category', 'StoreCategory')->name('store.category');
@@ -102,14 +102,21 @@ Route::middleware('auth')->group(function () {
         Route::get('delete/category/{id}', 'DeleteCategory')->name('delete.category');
     });
 
-    // Prouduct Routes
     Route::controller(ProductController::class)->group(function () {
-        Route::get('all/product', 'AllProduct')->name('all.product');
-        Route::get('add/product', 'AddProduct')->name('add.product');
-        Route::post('store/product', 'StoreProduct')->name('store.product');
-        Route::get('edit/product/{id}', 'EditProduct')->name('edit.product');
-        Route::post('update/product', 'UpdateProduct')->name('update.product');
-        Route::get('delete/product/{id}', 'DeleteProduct')->name('delete.product');
+        Route::get('all/product',                  'AllProduct')->name('all.product');
+        Route::get('add/product',                  'AddProduct')->name('add.product');
+        Route::post('store/product',               'StoreProduct')->name('store.product');
+ 
+        // ✅ GET route – id in URL so no CSRF / method mismatch
+        Route::get('details/product/{id}',         'DetailsProduct')->name('details.product');
+ 
+        Route::get('edit/product/{id}',            'EditProduct')->name('edit.product');
+        Route::post('update/product',              'UpdateProduct')->name('update.product');
+        Route::get('delete/product/{id}',          'DeleteProduct')->name('delete.product');
+        Route::post('update/product/image',        'UpdateProductImage')->name('update.product.image');
+        Route::get('delete/product/image/{id}',    'DeleteProductImage')->name('delete.product.image');
     });
-
+ 
 });
+
+
